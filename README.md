@@ -12,6 +12,6 @@ git clone https://github.com/tarcinrobotics/replit-samples.git
 
 # once copying the code base to the folder
 
-git add .
-git commit -m "your commit message"
-git push
+1. git add .
+2. git commit -m "your commit message"
+3. git push
