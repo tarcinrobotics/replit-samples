@@ -1,0 +1,199 @@
+Instruction & Comment for Replit AI:
+Project Title: Tutor-Student Platform (Full-Stack Web App)
+Tech Stack:
+
+Frontend: React.js or Next.js (choose based on preference)
+
+Backend: Node.js + Express or Django/Flask
+
+Database: PostgreSQL
+
+Authentication: JWT-based Authentication
+
+1. Database Models:
+User Model:
+
+Fields:
+
+id (primary key)
+
+name (string)
+
+email (string)
+
+password (hashed string)
+
+role (enum: 'Student', 'Tutor', 'Admin')
+
+Purpose:
+This model manages the users of the platform: Tutors, Students, and Admins. Admins will manage platform activities, Tutors will offer courses, and Students will enroll in them.
+
+Course Model:
+
+Fields:
+
+id (primary key)
+
+title (string)
+
+description (text)
+
+category (string)
+
+price (float)
+
+subject (string)
+
+tutorId (foreign key to User)
+
+Purpose:
+This model manages the courses available for students. Each course is associated with a specific tutor, and students can book sessions for the listed courses.
+
+Booking Model:
+
+Fields:
+
+id (primary key)
+
+status (enum: 'Pending', 'Confirmed')
+
+bookingTime (date)
+
+studentId (foreign key to User)
+
+courseId (foreign key to Course)
+
+Purpose:
+This model tracks the bookings made by students for courses and the booking status (whether it’s pending or confirmed).
+
+2. Seed Data (for testing):
+Subjects and Courses:
+
+Mathematics:
+
+Algebra Basics
+
+Calculus 101
+
+Linear Algebra
+
+Programming:
+
+Introduction to Python
+
+JavaScript for Beginners
+
+Web Development with HTML/CSS
+
+Science:
+
+Physics Fundamentals
+
+Introduction to Biology
+
+Chemistry for Beginners
+
+English:
+
+English Grammar for Beginners
+
+Advanced English Writing Skills
+
+English Literature
+
+Business Studies:
+
+Introduction to Business
+
+Marketing Essentials
+
+Financial Accounting
+
+Tutors (with Indian names):
+
+Ravi Kumar (Mathematics Tutor)
+
+Priya Sharma (Programming Tutor)
+
+Anjali Patel (Science Tutor)
+
+Amit Verma (English Tutor)
+
+Sunita Reddy (Business Studies Tutor)
+
+3. Backend API Routes:
+User Authentication Routes:
+
+/auth/register: POST route to register users (Student/Tutor).
+
+Fields: name, email, password, role (Student/Tutor).
+
+/auth/login: POST route for login with JWT token response.
+
+Fields: email, password.
+
+Course Routes:
+
+/courses: GET route for listing all courses available on the platform.
+
+/courses/:id: GET route to get detailed information about a specific course (by course ID).
+
+/courses/subject/:subject: GET route to filter courses based on a specific subject (e.g., "Mathematics", "Programming").
+
+Booking Routes:
+
+/bookings: POST route for students to book courses.
+
+Fields: courseId, studentId, bookingTime.
+
+/student/dashboard: GET route for students to view enrolled courses and booking status.
+
+Admin Panel (optional, for bonus features):
+
+Allow Admin to approve/reject tutor applications.
+
+Manage courses and users (view, delete, or edit).
+
+4. Frontend Pages:
+Homepage (Landing Page):
+
+Display available courses under each subject (Mathematics, Programming, etc.).
+
+Show course title, description, price, tutor name, and a button to view more details or enroll.
+
+Login Page:
+
+Fields for email and password.
+
+After login, store the JWT token in localStorage for authorization in future API calls.
+
+Signup Page:
+
+Allow users to select their role (Student or Tutor).
+
+Include fields for name, email, password, and an optional tutor bio if signing up as a tutor.
+
+Course Listing Page:
+
+Display courses by subject and allow students to filter by subject (e.g., Mathematics, Programming).
+
+Each course will display details like course name, tutor name, and price. There will be an option to enroll in the course.
+
+Student Dashboard:
+
+Display enrolled courses and the status of bookings (e.g., Pending or Confirmed).
+
+5. Features:
+Responsive Design:
+Ensure that the platform is mobile-friendly, and the UI adapts to different screen sizes.
+
+Course Filtering:
+Allow students to filter courses by subject, price, and tutor.
+
+Booking UI:
+Enable students to book or enroll in a course directly through the interface. After enrollment, students will see the status of their booking in the dashboard.
+
+JWT-based Authentication:
+Use JWT tokens to authenticate users and protect routes that require user login (e.g., booking and dashboard pages).
+
+By following these instructions, Replit AI will generate the backend and frontend for the Tutor-Student Platform app with specific subjects and courses and the functionality to manage users, enroll in courses, and track bookings.

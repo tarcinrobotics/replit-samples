@@ -1,0 +1,67 @@
+Enhance my existing full-stack web app **EduConnect – Tutor-Student Platform**, built with **Node.js**, **React.js**, and **PostgreSQL**. The app already supports:
+
+✅ Role-based login (Student & Tutor)  
+✅ Course browsing with subject filtering  
+✅ Students booking courses  
+✅ Dashboards for Tutors and Students  
+✅ Tutors confirming bookings  
+
+Now, please implement the following **enhancements**:
+
+🖌️ 1. **UI/UX Upgrade**:
+- Use **Tailwind CSS** or **Bootstrap** for a modern, colorful, and responsive design  
+- Improve overall navigation and accessibility  
+
+👩‍💼 2. **Admin Role & Dashboard**:
+- Introduce a third role: `Admin`  
+- Add an **Admin Dashboard** with:
+  - View all users (Students & Tutors)
+  - Approve/Reject tutor applications (`isApproved` flag in DB)
+  - Manage all courses (Add/Edit/Delete)
+  - View platform statistics: total users, bookings, confirmed sessions
+
+⭐ 3. **Ratings & Reviews**:
+- Allow Students to rate and review a course *after it's confirmed by the Tutor*  
+- Show average rating on course cards  
+- Store in a new `reviews` table (PostgreSQL): `id`, `student_id`, `course_id`, `rating`, `review_text`, `created_at`
+
+🔔 4. **Notification System**:
+- Notify **Tutors** when a student books a course  
+- Notify **Students** when a Tutor confirms a booking  
+- Display notifications as badges or dropdowns (in-app), store in a `notifications` table:
+  - `id`, `user_id`, `message`, `is_read`, `created_at`  
+- Optional: Add email notifications
+
+📚 5. **“My Courses” Section** on Student Dashboard:
+- List all enrolled and confirmed courses  
+- Display: course name, tutor name, status (pending/confirmed), session date, and a “Review” link (if confirmed)
+
+🏠 6. **Homepage Revamp**:
+- Use a banner with **TCE Campus Image** (from Google)  
+- Add a short platform intro + buttons: [Register], [Browse Courses]
+
+🎯 7. **Booking Workflow Enhancement**:
+- When a Student **books** a course:
+  - A **pending** request is sent to the Tutor  
+  - The course status shows as **Pending** in the Student Dashboard  
+- Once the Tutor **confirms**, the status updates to **Confirmed**  
+- Notification should trigger both ways
+
+🛠️ 8. **Preserve & Extend CRUD Operations**:
+- Admin: manage all users and courses  
+- Tutors: Add/Edit/Delete own courses  
+- Students: View & review booked courses  
+
+🔐 Continue using:
+- **JWT** for secure Authentication  
+- **REST API** for backend communication  
+- **PostgreSQL** for the database
+
+📦 Database Update Checklist:
+- `users`: add `isApproved` (boolean) for Tutor approval  
+- `notifications`: `id`, `user_id`, `message`, `is_read`, `created_at`  
+- `reviews`: `id`, `student_id`, `course_id`, `rating`, `review_text`, `created_at`
+
+📎 Note:
+Ensure **backward compatibility** with existing working features and do not break the core flow.  
+
